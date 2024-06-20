@@ -9,7 +9,7 @@ Agreement.  You only need to do that once. We can not look at your code until yo
 
 ## FORK
 
-Fork the project [on GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-go) and check out
+Fork the project [on GitHub](https://github.com/wayneforrest/microsoft-authentication-library-for-go) and check out
 your copy.
 
 Example for MSAL Go:
@@ -22,7 +22,7 @@ $ git remote add upstream git@github.com:AzureAD/microsoft-authentication-librar
 
 ## Setup, Building and Testing
 
-Please see the [Build & Run](https://github.com/AzureAD/microsoft-authentication-library-for-go/wiki/build-and-test) wiki page.
+Please see the [Build & Run](https://github.com/wayneforrest/microsoft-authentication-library-for-go/wiki/build-and-test) wiki page.
 
 ## Decide on which branch to create
 
@@ -32,7 +32,7 @@ If you need to contribute to a different branch, please contact us first (open a
 
 All details after this point is standard - make sure your commits have nice messages, and prefer rebase to merge.
 
-In case of doubt, please open an issue in the [issue tracker](https://github.com/AzureAD/microsoft-authentication-library-for-go/issues).
+In case of doubt, please open an issue in the [issue tracker](https://github.com/wayneforrest/microsoft-authentication-library-for-go/issues).
 
 Especially do so if you plan to work on a major change in functionality.  Nothing is more
 frustrating than seeing your hard work go to waste because your vision
@@ -113,5 +113,5 @@ to address, apply your changes in a separate commit and push that to your
 feature branch.  Post a comment in the pull request afterwards; GitHub does
 not send out notifications when you add commits.
 
-[on GitHub]: https://github.com/AzureAD/microsoft-authentication-library-for-go
-[issue tracker]: https://github.com/AzureAD/microsoft-authentication-library-for-go/issues
+[on GitHub]: https://github.com/wayneforrest/microsoft-authentication-library-for-go
+[issue tracker]: https://github.com/wayneforrest/microsoft-authentication-library-for-go/issues

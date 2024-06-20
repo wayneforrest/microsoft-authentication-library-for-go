@@ -15,10 +15,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/wstrust/defs"
 	"github.com/kylelemons/godebug/diff"
 	"github.com/kylelemons/godebug/pretty"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/wstrust/defs"
 )
 
 var testAuthorityEndpoints = authority.NewEndpoints(

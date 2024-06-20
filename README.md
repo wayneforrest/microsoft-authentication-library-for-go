@@ -6,12 +6,12 @@ The latest code resides in the `dev` branch.
 
 Quick links:
 
-| [Getting Started](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts) | [GoDoc](https://pkg.go.dev/github.com/AzureAD/microsoft-authentication-library-for-go/apps) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-go/wiki) | [Samples](https://github.com/AzureAD/microsoft-authentication-library-for-go/tree/main/apps/tests/devapps) | [Support](README.md#community-help-and-support) | [Feedback](https://forms.office.com/r/s4waBAytFJ) |
+| [Getting Started](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts) | [GoDoc](https://pkg.go.dev/github.com/wayneforrest/microsoft-authentication-library-for-go/apps) | [Wiki](https://github.com/wayneforrest/microsoft-authentication-library-for-go/wiki) | [Samples](https://github.com/wayneforrest/microsoft-authentication-library-for-go/tree/main/apps/tests/devapps) | [Support](README.md#community-help-and-support) | [Feedback](https://forms.office.com/r/s4waBAytFJ) |
 | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
 
 ## Build Status
 
-![Go](https://github.com/AzureAD/microsoft-authentication-library-for-go/workflows/Go/badge.svg?branch=dev)
+![Go](https://github.com/wayneforrest/microsoft-authentication-library-for-go/workflows/Go/badge.svg?branch=dev)
 
 ## Installation
 
@@ -19,7 +19,7 @@ Quick links:
 To install Go, visit [this link](https://golang.org/dl/).
 
 ### Installing MSAL Go
-`go get -u github.com/AzureAD/microsoft-authentication-library-for-go/`
+`go get -u github.com/wayneforrest/microsoft-authentication-library-for-go/`
 
 ## Usage
 Before using MSAL Go, you will need to [register your application with the Microsoft identity platform](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-register-an-app).
@@ -33,7 +33,7 @@ Acquiring tokens with MSAL Go follows this general pattern. There might be some 
    * Initializing a public client:
 
     ```go
-    import "github.com/AzureAD/microsoft-authentication-library-for-go/apps/public"
+    import "github.com/wayneforrest/microsoft-authentication-library-for-go/apps/public"
 
     publicClient, err := public.New("client_id", public.WithAuthority("https://login.microsoftonline.com/your_tenant"))
     ```
@@ -41,7 +41,7 @@ Acquiring tokens with MSAL Go follows this general pattern. There might be some 
    * Initializing a confidential client:
 
     ```go
-    import "github.com/AzureAD/microsoft-authentication-library-for-go/apps/confidential"
+    import "github.com/wayneforrest/microsoft-authentication-library-for-go/apps/confidential"
 
     // confidential clients have a credential, such as a secret or a certificate
     cred, err := confidential.NewCredFromSecret("client_secret")
@@ -100,7 +100,7 @@ Acquiring tokens with MSAL Go follows this general pattern. There might be some 
 
 We use [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) to work with the community on supporting Azure Active Directory and its SDKs, including this one! We highly recommend you ask your questions on Stack Overflow (we're all on there!) Also browse existing issues to see if someone has had your question before. Please use the "msal" tag when asking your questions.
 
-If you find and bug or have a feature request, please raise the issue on [GitHub Issues](https://github.com/AzureAD/microsoft-authentication-library-for-go/issues).
+If you find and bug or have a feature request, please raise the issue on [GitHub Issues](https://github.com/wayneforrest/microsoft-authentication-library-for-go/issues).
 
 ## Submit Feedback
 We'd like your thoughts on this library. Please complete [this short survey.](https://forms.office.com/r/s4waBAytFJ)

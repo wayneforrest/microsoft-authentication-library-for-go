@@ -11,11 +11,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/json"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/shared"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/json"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/shared"
 )
 
 // PartitionedManager is a partitioned in-memory cache of access tokens, accounts and meta data.
@@ -287,7 +287,7 @@ func (m *PartitionedManager) readRefreshToken(envAliases []string, familyID, cli
 	// The algorithm is:
 	// If application is NOT part of the family, search by client_ID
 	// If app is part of the family or if we DO NOT KNOW if it's part of the family, search by family ID, then by client_id (we will know if an app is part of the family after the first token response).
-	// https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/311fe8b16e7c293462806f397e189a6aa1159769/src/client/Microsoft.Identity.Client/Internal/Requests/Silent/CacheSilentStrategy.cs#L95
+	// https://github.com/wayneforrest/microsoft-authentication-library-for-dotnet/blob/311fe8b16e7c293462806f397e189a6aa1159769/src/client/Microsoft.Identity.Client/Internal/Requests/Silent/CacheSilentStrategy.cs#L95
 	m.contractMu.RLock()
 	defer m.contractMu.RUnlock()
 	for _, matcher := range matchers {

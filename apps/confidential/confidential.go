@@ -19,15 +19,15 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/cache"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/base"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/exported"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/options"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/shared"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/cache"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/base"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/exported"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/options"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/shared"
 )
 
 /*

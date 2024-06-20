@@ -18,11 +18,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/errors"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/exported"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/fake"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/errors"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/exported"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/fake"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority"
 )
 
 var testScopes = []string{"scope"}

@@ -15,14 +15,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/cache"
-	internalTime "github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/json/types/time"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/mock"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/fake"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/wstrust"
 	"github.com/kylelemons/godebug/pretty"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/cache"
+	internalTime "github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/json/types/time"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/mock"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/fake"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/wstrust"
 )
 
 const authorityFmt = "https://%s/%s"
@@ -221,7 +221,7 @@ func TestAcquireTokenWithTenantID(t *testing.T) {
 				URL := ""
 				mockClient := mock.Client{}
 				if method == "obo" {
-					// TODO: OBO does instance discovery twice before first token request https://github.com/AzureAD/microsoft-authentication-library-for-go/issues/351
+					// TODO: OBO does instance discovery twice before first token request https://github.com/wayneforrest/microsoft-authentication-library-for-go/issues/351
 					mockClient.AppendResponse(mock.WithBody(mock.GetInstanceDiscoveryBody(lmo, test.tenant)))
 				}
 				mockClient.AppendResponse(mock.WithBody(mock.GetTenantDiscoveryBody(lmo, test.tenant)))
@@ -570,7 +570,7 @@ func TestWithClaims(t *testing.T) {
 			t.Run(method, func(t *testing.T) {
 				mockClient := mock.Client{}
 				if method == "obo" {
-					// TODO: OBO does instance discovery twice before first token request https://github.com/AzureAD/microsoft-authentication-library-for-go/issues/351
+					// TODO: OBO does instance discovery twice before first token request https://github.com/wayneforrest/microsoft-authentication-library-for-go/issues/351
 					mockClient.AppendResponse(mock.WithBody(mock.GetInstanceDiscoveryBody(lmo, tenant)))
 				}
 				mockClient.AppendResponse(mock.WithBody(mock.GetTenantDiscoveryBody(lmo, tenant)))

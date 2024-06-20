@@ -79,7 +79,7 @@ structs do not contain, we cannot drop them.  We must send them back to the serv
 
 To handle that, we use our own custom json package that handles this.
 
-See the design at: [Design](https://github.com/AzureAD/microsoft-authentication-library-for-go/blob/dev/internal/json/design.md)
+See the design at: [Design](https://github.com/wayneforrest/microsoft-authentication-library-for-go/blob/dev/internal/json/design.md)
 
 ### Backend communication
 

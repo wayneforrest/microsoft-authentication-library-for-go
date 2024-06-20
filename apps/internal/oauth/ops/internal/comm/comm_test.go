@@ -13,9 +13,9 @@ import (
 	"net/url"
 	"testing"
 
-	customJSON "github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/json"
 	"github.com/kylelemons/godebug/diff"
 	"github.com/kylelemons/godebug/pretty"
+	customJSON "github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/json"
 )
 
 type recorder struct {

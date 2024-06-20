@@ -18,10 +18,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/errors"
-	customJSON "github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/json"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/version"
 	"github.com/google/uuid"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/errors"
+	customJSON "github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/json"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/version"
 )
 
 // HTTPClient represents an HTTP client.

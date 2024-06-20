@@ -8,7 +8,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/cache"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/cache"
 )
 
 type TokenCache struct {

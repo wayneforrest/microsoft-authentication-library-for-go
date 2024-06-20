@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-// These tests connect to test apps in a private test tenant the MSAL team has setup. 
+// These tests connect to test apps in a private test tenant the MSAL team has setup.
 // The tests will not run on a contributor's dev box, but will run as part of the CI
 
 package integration
@@ -17,9 +17,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/confidential"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/errors"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/public"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/confidential"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/errors"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/public"
 )
 
 const (

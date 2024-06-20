@@ -10,15 +10,15 @@ import (
 	"io"
 	"time"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/errors"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/exported"
-	internalTime "github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/json/types/time"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/wstrust"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/wstrust/defs"
 	"github.com/google/uuid"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/errors"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/exported"
+	internalTime "github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/json/types/time"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/wstrust"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/wstrust/defs"
 )
 
 // ResolveEndpointer contains the methods for resolving authority endpoints.

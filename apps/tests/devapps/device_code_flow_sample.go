@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/public"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/public"
 )
 
 func acquireTokenDeviceCode() {

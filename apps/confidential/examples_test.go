@@ -9,7 +9,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/confidential"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/confidential"
 )
 
 // This example demonstrates the general pattern for authenticating with MSAL Go:

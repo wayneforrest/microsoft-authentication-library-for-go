@@ -9,7 +9,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/confidential"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/confidential"
 )
 
 var _config2 *Config = CreateConfig("confidential_config.json")

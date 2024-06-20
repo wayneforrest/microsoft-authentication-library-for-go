@@ -9,11 +9,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/json"
-	internalTime "github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/json/types/time"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/shared"
 	"github.com/kylelemons/godebug/pretty"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/json"
+	internalTime "github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/json/types/time"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens"
+	"github.com/wayneforrest/microsoft-authentication-library-for-go/apps/internal/shared"
 )
 
 var (
@@ -568,7 +568,7 @@ func TestRefreshTokenMarshal(t *testing.T) {
 }
 
 func TestRegression196(t *testing.T) {
-	// https://github.com/AzureAD/microsoft-authentication-library-for-go/issues/196
+	// https://github.com/wayneforrest/microsoft-authentication-library-for-go/issues/196
 
 	// Note: all values here look real, but they have been altered to prevent any exposure
 	// of even a temporary security value.
