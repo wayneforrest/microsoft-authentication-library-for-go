@@ -7,7 +7,7 @@ package local
 import (
 	"context"
 	"fmt"
-	"html"
+	"html/template"
 	"net"
 	"net/http"
 	"strconv"
@@ -37,10 +37,18 @@ const failPage = `
 </head>
 <body>
 	<p>Authentication failed. You can return to the application. Feel free to close this browser tab.</p>
-	<p>Error details: error %s error_description: %s</p>
+	<p>Error details: error {{.Code}}, error description: {{.Err}}</p>
 </body>
 </html>
 `
+
+// code is the html template variable name,
+// which matches the Result Code variable
+const code string = "Code"
+
+// err is the html template variable name
+// which matches the Rest Err variable
+const err string = "Err"
 
 // Result is the result from the redirect.
 type Result struct {
@@ -59,6 +67,7 @@ type Server struct {
 	reqState          string
 	optionSuccessPage []byte
 	optionErrorPage   []byte
+	errorPageTemplate string
 }
 
 // New creates a local HTTP server and starts it.
@@ -93,6 +102,7 @@ func New(reqState string, port int, successPage []byte, errorPage []byte) (*Serv
 		resultCh:          make(chan Result, 1),
 		optionSuccessPage: successPage,
 		optionErrorPage:   errorPage,
+		errorPageTemplate: failPage, // default error page
 	}
 	serv.s.Handler = http.HandlerFunc(serv.handler)
 
@@ -141,20 +151,70 @@ func (s *Server) putResult(r Result) {
 	}
 }
 
+func containsVariables(templateStr string, variables ...string) (bool, string) {
+	missingVars := []string{}
+	containsAll := true
+
+	for _, variable := range variables {
+		if !strings.Contains(templateStr, "{{."+variable+"}}") {
+			containsAll = false
+			missingVars = append(missingVars, variable)
+		}
+	}
+
+	var missingStr string
+	for i, v := range missingVars {
+		if i == len(missingVars) {
+			missingStr += v
+		} else {
+			missingStr += v + ", "
+		}
+	}
+
+	return containsAll, missingStr
+}
+
+func (s *Server) handleError(w http.ResponseWriter, errorResult Result) {
+	if len(s.optionErrorPage) > 0 {
+		validTemplate, missingStr := containsVariables(string(s.optionErrorPage), code, err)
+		if !validTemplate {
+			errorMessage := fmt.Sprintf("error, template missing variables: %s", missingStr)
+			s.error(w, http.StatusInternalServerError, errorMessage)
+		}
+		s.errorPageTemplate = string(s.optionErrorPage)
+	}
+
+	failPageTemplate, err := template.New("failPage").Parse(s.errorPageTemplate)
+	if err != nil {
+		s.error(w, http.StatusInternalServerError, "error parsing template")
+	}
+
+	err = failPageTemplate.Execute(w, errorResult)
+	if err != nil {
+		s.error(w, http.StatusInternalServerError, "error rendering page")
+	}
+	s.putResult(Result{Code: errorResult.Code}) // shuts down the server
+}
+
+func (s *Server) handleSuccess(w http.ResponseWriter) {
+	if len(s.optionSuccessPage) > 0 {
+		_, _ = w.Write(s.optionSuccessPage)
+	} else {
+		_, _ = w.Write(okPage)
+	}
+}
+
 func (s *Server) handler(w http.ResponseWriter, r *http.Request) {
 	q := r.URL.Query()
 
 	headerErr := q.Get("error")
 	if headerErr != "" {
-		desc := html.EscapeString(q.Get("error_description"))
-		// Note: It is a little weird we handle some errors by not going to the failPage. If they all should,
-		// change this to s.error() and make s.error() write the failPage instead of an error code.
-		if len(s.optionErrorPage) > 0 {
-			_, _ = w.Write(s.optionErrorPage)
-		} else {
-			_, _ = w.Write([]byte(fmt.Sprintf(failPage, headerErr, desc)))
+		// upstream error
+		errorResult := Result{
+			Code: headerErr,
+			Err:  fmt.Errorf(q.Get("error_description")),
 		}
-		s.putResult(Result{Err: fmt.Errorf(desc)})
+		s.handleError(w, errorResult)
 		return
 	}
 
@@ -162,24 +222,35 @@ func (s *Server) handler(w http.ResponseWriter, r *http.Request) {
 	switch respState {
 	case s.reqState:
 	case "":
-		s.error(w, http.StatusInternalServerError, "server didn't send OAuth state")
+		// missing state
+		errorResult := Result{
+			Code: fmt.Sprintf("%d", http.StatusInternalServerError),
+			Err:  fmt.Errorf("server didn't send OAuth state"),
+		}
+		s.handleError(w, errorResult)
 		return
 	default:
-		s.error(w, http.StatusInternalServerError, "mismatched OAuth state, req(%s), resp(%s)", s.reqState, respState)
+		// mismatched state
+		errorResult := Result{
+			Code: fmt.Sprintf("%d", http.StatusInternalServerError),
+			Err:  fmt.Errorf("mismatched OAuth state, req(%s), resp(%s)", s.reqState, respState),
+		}
+		s.handleError(w, errorResult)
 		return
 	}
 
 	code := q.Get("code")
 	if code == "" {
-		s.error(w, http.StatusInternalServerError, "authorization code missing in query string")
+		// missing code
+		errorResult := Result{
+			Code: fmt.Sprintf("%d", http.StatusInternalServerError),
+			Err:  fmt.Errorf("authorization code missing in query string"),
+		}
+		s.handleError(w, errorResult)
 		return
 	}
 
-	if len(s.optionSuccessPage) > 0 {
-		_, _ = w.Write(s.optionSuccessPage)
-	} else {
-		_, _ = w.Write(okPage)
-	}
+	s.handleSuccess(w)
 	s.putResult(Result{Code: code})
 }
 
